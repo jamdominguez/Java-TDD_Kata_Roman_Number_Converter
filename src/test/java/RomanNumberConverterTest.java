@@ -8,4 +8,9 @@ public class RomanNumberConverterTest {
         Assert.assertEquals("I", RomanNumberConverter.toRoman(1));
     }
 
+    @Test
+    public void twoReturnII(){
+        Assert.assertEquals("II", RomanNumberConverter.toRoman(2));
+    }
+
 }
