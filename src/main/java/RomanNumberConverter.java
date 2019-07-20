@@ -2,6 +2,7 @@ public class RomanNumberConverter {
     public static String toRoman(int i) {
         StringBuilder result = new StringBuilder();
 
+        if (i == 9) return "IX";
         if (i >= 5) {
             result.append("V");
             i -= 5;

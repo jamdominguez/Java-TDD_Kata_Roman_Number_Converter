@@ -37,4 +37,14 @@ public class RomanNumberConverterTest {
     public void sevenReturnVII(){
         Assert.assertEquals("VII", RomanNumberConverter.toRoman(7));
     }
+
+    @Test
+    public void eightReturnVIII(){
+        Assert.assertEquals("VIII", RomanNumberConverter.toRoman(8));
+    }
+
+    @Test
+    public void nineReturnIX(){
+        Assert.assertEquals("IX", RomanNumberConverter.toRoman(9));
+    }
 }
