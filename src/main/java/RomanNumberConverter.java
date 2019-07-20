@@ -18,9 +18,25 @@ public class RomanNumberConverter {
     public static String toRoman(int i) {
         StringBuilder result = new StringBuilder();
 
-        if (i == 100) {
-            result.append(SYMBOLS.get(100));
+        if (i == 1000) {
+            result.append(SYMBOLS.get(1000));
             return result.toString();
+        }
+        if (i >= 900) {
+            result.append(SYMBOLS.get(100)).append(SYMBOLS.get(1000));
+            i -= 900;
+        }
+        if (i >= 500) {
+            result.append(SYMBOLS.get(500));
+            i -= 500;
+        }
+        if (i >= 400) {
+            result.append(SYMBOLS.get(100)).append(SYMBOLS.get(500));
+            i -=400;
+        }
+        while (i >= 100) {
+            result.append(SYMBOLS.get(100));
+            i -= 100;
         }
         if (i >= 90) {
             result.append(SYMBOLS.get(10)).append(SYMBOLS.get(100));
