@@ -18,4 +18,9 @@ public class RomanNumberConverterTest {
         Assert.assertEquals("III", RomanNumberConverter.toRoman(3));
     }
 
+    @Test
+    public void fourReturnIV(){
+        Assert.assertEquals("IV", RomanNumberConverter.toRoman(4));
+    }
+
 }
