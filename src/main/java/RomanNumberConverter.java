@@ -18,6 +18,20 @@ public class RomanNumberConverter {
     public static String toRoman(int i) {
         StringBuilder result = new StringBuilder();
 
+        while (i > 0) {
+            if (i >= 5) {
+                result.append(SYMBOLS.get(5));
+                i -=5;
+            } else if (i == 4) {
+                result.append(SYMBOLS.get(1)).append(SYMBOLS.get(5));
+                i -= 4;
+            } else {
+                result.append(SYMBOLS.get(1));
+                i --;
+            }
+        }
+
+        /*
         if (i == 1000) {
             result.append(SYMBOLS.get(1000));
             return result.toString();
@@ -69,7 +83,7 @@ public class RomanNumberConverter {
         while (i-- > 0) {
             result.append(SYMBOLS.get(1));
         }
-
+*/
         return result.toString();
     }
 }
