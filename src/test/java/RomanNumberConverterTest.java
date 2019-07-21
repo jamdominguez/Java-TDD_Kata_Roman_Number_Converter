@@ -52,7 +52,7 @@ public class RomanNumberConverterTest {
     public void tenReturnX(){
         Assert.assertEquals("X", RomanNumberConverter.toRoman(10));
     }
-/*
+
     @Test
     public void elevenReturnXI(){
         Assert.assertEquals("XI", RomanNumberConverter.toRoman(11));
@@ -71,6 +71,11 @@ public class RomanNumberConverterTest {
     @Test
     public void fourteenReturnXIV(){
         Assert.assertEquals("XIV", RomanNumberConverter.toRoman(14));
+    }
+
+    @Test
+    public void _44returnXLIV(){
+        Assert.assertEquals("XLIV", RomanNumberConverter.toRoman(44));
     }
 
     @Test
@@ -112,5 +117,5 @@ public class RomanNumberConverterTest {
         Assert.assertEquals("CMXCIX", RomanNumberConverter.toRoman(999));
         Assert.assertEquals("M", RomanNumberConverter.toRoman(1000));
     }
-    */
+
 }

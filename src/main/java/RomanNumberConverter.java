@@ -1,95 +1,55 @@
-import java.util.*;
-
 public class RomanNumberConverter {
 
-    public static Map SYMBOLS;
+    public static Symbol[] SYMBOLS = {
+            new Symbol(1, "I"),
+            new Symbol(5, "V"),
+            new Symbol(10, "X"),
+            new Symbol(50, "L"),
+            new Symbol(100, "C"),
+            new Symbol(500, "D"),
+            new Symbol(1000, "M")
+    };
 
-    static {
-        SYMBOLS = new HashMap();
-        SYMBOLS.put(1, "I");
-        SYMBOLS.put(5, "V");
-        SYMBOLS.put(10, "X");
-        SYMBOLS.put(50, "L");
-        SYMBOLS.put(100, "C");
-        SYMBOLS.put(500, "D");
-        SYMBOLS.put(1000, "M");
+    private static boolean isASpecialNumber(int a, int b, int num) {
+        int diff = a - b;
+        if (diff == 4 && num == 4) return true;
+        if (diff == 40 && num >= 40 && num <= 49) return true;
+        if (diff == 400 && num >= 400 && num <= 499) return true;
+        if (diff == 9 && num == 9) return true;
+        if (diff == 90 && num >= 90 && num <= 99) return true;
+        if (diff == 900 && num >= 900 && num <= 999) return true;
+        return false;
     }
 
-    public static String toRoman(int i) {
+    public static String toRoman(int num) {
         StringBuilder result = new StringBuilder();
 
-        while (i > 0) {
-            if (i >= 10) {
-                result.append(SYMBOLS.get(10));
-                i -=10;
-            } else if (i == 9) {
-                result.append(SYMBOLS.get(1)).append(SYMBOLS.get(10));
-                i -= 9;
-            } else if (i >= 5) {
-                result.append(SYMBOLS.get(5));
-                i -=5;
-            } else if (i == 4) {
-                result.append(SYMBOLS.get(1)).append(SYMBOLS.get(5));
-                i -= 4;
-            } else {
-                result.append(SYMBOLS.get(1));
-                i --;
+        while (num > 0) { //number upper to 0
+            for (int i = SYMBOLS.length - 1; i >= 0; i--) { //check all symbols
+                Symbol symbol = SYMBOLS[i];
+                if (i > 1 && isASpecialNumber(symbol.getDecimal(), SYMBOLS[i - 2].getDecimal(), num)) {//for 9, 99 , 999
+                    result.append(SYMBOLS[i - 2].getRoman()).append(symbol.getRoman());
+                    num -= symbol.getDecimal() - SYMBOLS[i - 2].getDecimal();
+                    break;
+                }
+                if (i > 0 && isASpecialNumber(symbol.getDecimal(), SYMBOLS[i - 1].getDecimal(), num)) {//for 4, 44, 444
+                    if (SYMBOLS[i - 1].getDecimal() == num) {
+                        result.append(SYMBOLS[i - 1].getRoman());
+                        num = 0;
+                        break;
+                    } else {
+                        result.append(SYMBOLS[i - 1].getRoman()).append(symbol.getRoman());//equals
+                        num -= symbol.getDecimal() - SYMBOLS[i - 1].getDecimal();
+                        break;
+                    }
+                }
+                if (num >= symbol.getDecimal()) {
+                    result.append(symbol.getRoman());
+                    num -= symbol.getDecimal();
+                    break;
+                }
             }
         }
-
-        /*
-        if (i == 1000) {
-            result.append(SYMBOLS.get(1000));
-            return result.toString();
-        }
-        if (i >= 900) {
-            result.append(SYMBOLS.get(100)).append(SYMBOLS.get(1000));
-            i -= 900;
-        }
-        if (i >= 500) {
-            result.append(SYMBOLS.get(500));
-            i -= 500;
-        }
-        if (i >= 400) {
-            result.append(SYMBOLS.get(100)).append(SYMBOLS.get(500));
-            i -=400;
-        }
-        while (i >= 100) {
-            result.append(SYMBOLS.get(100));
-            i -= 100;
-        }
-        if (i >= 90) {
-            result.append(SYMBOLS.get(10)).append(SYMBOLS.get(100));
-            i -= 90;
-        }
-        if (i >= 50) {
-            result.append(SYMBOLS.get(50));
-            i -= 50;
-        }
-        if (i >= 40) {
-            result.append(SYMBOLS.get(10)).append(SYMBOLS.get(50));
-            i -=40;
-        }
-        while (i >= 10) {
-            result.append(SYMBOLS.get(10));
-            i -= 10;
-        }
-        if (i == 9) {
-            result.append(SYMBOLS.get(1)).append(SYMBOLS.get(10));
-            return result.toString();
-        }
-        if (i >= 5) {
-            result.append(SYMBOLS.get(5));
-            i -= 5;
-        }
-        if (i == 4) {
-            result.append(SYMBOLS.get(1)).append(SYMBOLS.get(5));
-            return result.toString();
-        }
-        while (i-- > 0) {
-            result.append(SYMBOLS.get(1));
-        }
-*/
         return result.toString();
     }
 }
