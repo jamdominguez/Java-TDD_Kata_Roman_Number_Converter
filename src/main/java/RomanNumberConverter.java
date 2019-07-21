@@ -24,6 +24,7 @@ public class RomanNumberConverter {
     public static String toRoman(int num) {
         StringBuilder result = new StringBuilder();
 
+        if (num > SYMBOLS[SYMBOLS.length-1].getArabic() || num < 0) throw new ArithmeticException();
         while (num > 0) { //numbers upper 0
             for (int i = SYMBOLS.length - 1; i >= 0; i--) { //check all symbols
                 Symbol symbol = SYMBOLS[i];

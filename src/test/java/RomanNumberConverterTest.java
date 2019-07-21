@@ -122,4 +122,12 @@ public class RomanNumberConverterTest {
         Assert.assertEquals("CMXCIX", RomanNumberConverter.toRoman(999));
         Assert.assertEquals("M", RomanNumberConverter.toRoman(1000));
     }
+
+    @Test(expected = Exception.class)
+    public void notAllowedConversion(){
+        Assert.assertEquals("", RomanNumberConverter.toRoman(1001));
+        Assert.assertEquals("", RomanNumberConverter.toRoman(999999));
+        Assert.assertEquals("", RomanNumberConverter.toRoman(-1));
+        Assert.assertEquals("", RomanNumberConverter.toRoman(-111111));
+    }
 }
