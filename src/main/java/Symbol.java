@@ -1,18 +1,18 @@
 public class Symbol {
-    private int decimal;
+    private int arabic;
     private String roman;
 
-    public Symbol(int decimal, String roman) {
-        this.decimal = decimal;
+    public Symbol(int arabic, String roman) {
+        this.arabic = arabic;
         this.roman = roman;
     }
 
-    public int getDecimal() {
-        return decimal;
+    public int getArabic() {
+        return arabic;
     }
 
-    public void setDecimal(int decimal) {
-        this.decimal = decimal;
+    public void setArabic(int arabic) {
+        this.arabic = arabic;
     }
 
     public String getRoman() {

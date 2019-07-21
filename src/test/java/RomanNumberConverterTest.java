@@ -4,6 +4,11 @@ import org.junit.Test;
 public class RomanNumberConverterTest {
 
     @Test
+    public void zeroReturnEmpty(){
+        Assert.assertEquals("", RomanNumberConverter.toRoman(0));
+    }
+
+    @Test
     public void oneReturnI(){
         Assert.assertEquals("I", RomanNumberConverter.toRoman(1));
     }
@@ -117,5 +122,4 @@ public class RomanNumberConverterTest {
         Assert.assertEquals("CMXCIX", RomanNumberConverter.toRoman(999));
         Assert.assertEquals("M", RomanNumberConverter.toRoman(1000));
     }
-
 }

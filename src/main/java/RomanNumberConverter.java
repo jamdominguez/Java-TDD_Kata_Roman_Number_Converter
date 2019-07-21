@@ -24,28 +24,28 @@ public class RomanNumberConverter {
     public static String toRoman(int num) {
         StringBuilder result = new StringBuilder();
 
-        while (num > 0) { //number upper to 0
+        while (num > 0) { //numbers upper 0
             for (int i = SYMBOLS.length - 1; i >= 0; i--) { //check all symbols
                 Symbol symbol = SYMBOLS[i];
-                if (i > 1 && isASpecialNumber(symbol.getDecimal(), SYMBOLS[i - 2].getDecimal(), num)) {//for 9, 99 , 999
+                if (i > 1 && isASpecialNumber(symbol.getArabic(), SYMBOLS[i - 2].getArabic(), num)) {//for 9, 99 , 999
                     result.append(SYMBOLS[i - 2].getRoman()).append(symbol.getRoman());
-                    num -= symbol.getDecimal() - SYMBOLS[i - 2].getDecimal();
+                    num -= symbol.getArabic() - SYMBOLS[i - 2].getArabic();
                     break;
                 }
-                if (i > 0 && isASpecialNumber(symbol.getDecimal(), SYMBOLS[i - 1].getDecimal(), num)) {//for 4, 44, 444
-                    if (SYMBOLS[i - 1].getDecimal() == num) {
+                if (i > 0 && isASpecialNumber(symbol.getArabic(), SYMBOLS[i - 1].getArabic(), num)) {//for 4, 44, 444
+                    if (SYMBOLS[i - 1].getArabic() == num) {
                         result.append(SYMBOLS[i - 1].getRoman());
                         num = 0;
                         break;
                     } else {
                         result.append(SYMBOLS[i - 1].getRoman()).append(symbol.getRoman());//equals
-                        num -= symbol.getDecimal() - SYMBOLS[i - 1].getDecimal();
+                        num -= symbol.getArabic() - SYMBOLS[i - 1].getArabic();
                         break;
                     }
                 }
-                if (num >= symbol.getDecimal()) {
+                if (num >= symbol.getArabic()) {
                     result.append(symbol.getRoman());
-                    num -= symbol.getDecimal();
+                    num -= symbol.getArabic();
                     break;
                 }
             }
