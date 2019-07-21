@@ -19,7 +19,13 @@ public class RomanNumberConverter {
         StringBuilder result = new StringBuilder();
 
         while (i > 0) {
-            if (i >= 5) {
+            if (i >= 10) {
+                result.append(SYMBOLS.get(10));
+                i -=10;
+            } else if (i == 9) {
+                result.append(SYMBOLS.get(1)).append(SYMBOLS.get(10));
+                i -= 9;
+            } else if (i >= 5) {
                 result.append(SYMBOLS.get(5));
                 i -=5;
             } else if (i == 4) {
