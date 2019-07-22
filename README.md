@@ -24,6 +24,7 @@ ___
 Develop a application to convert decimals number to roman numbers (0-1000):
 
 - 1 -- I, 2 -- II, 3 -- III... 50 -- L, etc <br/>
-- 0 not is allowed, must return Exception
+- 0 is allowed, must return emtpy string
+- negative numbers not are allowed, return Exception
 ___
 Now we must think in basic unit test to cover every cases...
