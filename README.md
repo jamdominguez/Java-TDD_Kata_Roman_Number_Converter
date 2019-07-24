@@ -1,6 +1,8 @@
 # Java-TDD_Kata_Roman_Number_Converter
 Simple java local application, using Test Driven Development methodology.
 
+**Level: MEDIUM**
+
 Setup:
  - JDK 1.8.0_191
  - IDE IntelliJ Idea
